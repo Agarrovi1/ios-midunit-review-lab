@@ -547,3 +547,25 @@ enum FileStatus: CustomStringConvertible {
 Input: `[FileStatus.saved(numberOfVersions: 5), FileStatus.saved(numberOfVersions: 3), FileStatus.saved(numberOfVersions: 8)], 4`
 
 Output: `[File that has been saved 5 times, File that has been saved 8 times]`
+
+```swift
+var input = [FileStatus.saved(numberOfVersions: 5), FileStatus.saved(numberOfVersions: 3), FileStatus.saved(numberOfVersions: 8)] //4
+var newArray: [FileStatus] = []
+var output: [String] = []
+
+for a in input {
+switch a {
+case .saved(numberOfVersions: let x):
+if x > 4 {
+newArray.append(a)
+}
+case .unsaved:
+continue
+}
+}
+print(newArray)
+for a in newArray {
+output.append(a.description)
+}
+print(output)
+```
